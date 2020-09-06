@@ -14,8 +14,13 @@ layout: default
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {%- assign date_format = site.minima.date_format | default: "%d.%m.%Y" -%}
         <h3>
+          {%- if post.thumbnail -%}
+            <a class="post-thumb" href="{{ post.url | relative_url }}">
+              <img src="{{ post.thumbnail }}" alt="{{ post.title }}" />
+            </a>
+          {%- endif -%}
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
           </a>
@@ -28,7 +33,7 @@ layout: default
       {%- endfor -%}
     </ul>
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+    <p class="rss-subscribe"><a href="{{ "/feed.xml" | relative_url }}">RSS</a></p>
   {%- endif -%}
 
 </div>

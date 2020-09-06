@@ -2,7 +2,8 @@
 layout: post
 title:  "Ремейк трилогии Prince of Persia: чего ждать и ждать ли вообще?"
 date:   2020-09-04 21:44:24 +0300
-categories: Мнение
+thumbnail: "/assets/img/posts/2020-09-04-prince-of-persia-remake/first.jpg"
+categories: opinion
 ---
 
 Джейсон Шраер, главный инсайдер всея игровая индустрия, на днях 
