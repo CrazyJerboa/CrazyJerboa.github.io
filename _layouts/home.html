@@ -16,6 +16,11 @@ layout: default
       <li>
         {%- assign date_format = site.minima.date_format | default: "%d.%m.%Y" -%}
         <h3>
+          {%- if post.thumbnail -%}
+            <a class="post-thumb" href="{{ post.url | relative_url }}">
+              <img src="{{ post.thumbnail }}" alt="{{ post.title }}" />
+            </a>
+          {%- endif -%}
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
           </a>
