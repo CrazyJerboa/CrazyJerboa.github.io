@@ -2,38 +2,47 @@
 layout: default
 ---
 
-<div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+<div class="PageInner Home">
+    {%- if page.title -%}
+    <h1 class="PageTitle">{{ page.title }}</h1>
+    {%- endif -%}
 
-  {{ content }}
+    {{ content }}
 
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Последние публикации" }}</h2>
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%d.%m.%Y" -%}
-        <h3>
-          {%- if post.thumbnail -%}
-            <a class="post-thumb" href="{{ post.url | relative_url }}">
-              <img src="{{ post.thumbnail }}" alt="{{ post.title }}" />
-            </a>
-          {%- endif -%}
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+    {%- if site.posts.size > 0 -%}
+    <h2 class="PostList__subtitle">{{ page.list_title | default: "Последние публикации" }}</h2>
+
+    <div class="PostList tiles">
+        {%- for post in site.posts -%}
+        <div class="PostElement">
+            {%- assign date_format = site.minima.date_format | default: "%d.%m.%Y" -%}
+
+            {%- if post.thumbnail -%}
+            <div class="PostElement__thumb">
+                <a href="{{ post.url | relative_url }}">
+                    <img src="{{ post.thumbnail }}" alt="{{ post.title }}" />
+                </a>
+            </div>
+            {%- endif -%}
+
+            <div class="PostElement__text">
+                <p class="PostElement__meta">{{ post.date | date: date_format }}</p>
+
+                <h3 class="PostElement__title">
+                    <a class="PostElement__link" href="{{ post.url | relative_url }}">
+                        {{ post.title | escape }}
+                    </a>
+                </h3>
+
+                {%- if site.show_excerpts -%}
+                {{ post.excerpt }}
+                {%- endif -%}
+            </div>
+        </div>
+        {%- endfor -%}
+    </div>
 
     <p class="rss-subscribe"><a href="{{ "/feed.xml" | relative_url }}">RSS</a></p>
-  {%- endif -%}
+    {%- endif -%}
 
 </div>
